@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Giới Thiệu Tương Tác</title>
+    <style>
+      /* CSS cơ bản giúp giao diện dễ nhìn hơn */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        transition: background-color 0.3s ease; /* Hiệu ứng mượt khi đổi màu */
+      }
+      header {
+        background-color: #333;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+      }
+      nav {
+        background-color: #444;
+        padding: 0.5rem;
+        text-align: center;
+      }
+      nav a {
+        color: white;
+        margin: 0 10px;
+        text-decoration: none;
+      }
+      main {
+        padding: 20px;
+        min-height: 300px;
+      }
+      footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+      }
+      #greeting {
+        font-size: 20px;
+        font-weight: bold;
+        color: #2c3e50;
+      }
+    </style>
+  </head>
+  <body id="body">
+    <!-- 1. Cấu trúc HTML gồm header, nav, main, footer -->
+    <header>
+      <h1>Trang Cá Nhân Của Tôi</h1>
+    </header>
+
+    <nav>
+      <a href="#">Trang chủ</a>
+      <a href="#">Giới thiệu</a>
+      <a href="#">Liên hệ</a>
+    </nav>
+
+    <main>
+      <!-- Lời chào theo buổi sẽ hiển thị ở đây -->
+      <p id="greeting"></p>
+
+      <p>Chào mừng bạn đã đến với trang web giới thiệu tương tác của tôi!</p>
+
+      <!-- Nút bấm đổi màu nền -->
+      <button id="changeBgBtn">Đổi màu nền</button>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Trang cá nhân tương tác. Tất cả quyền được bảo lưu.</p>
+    </footer>
+
+    <!-- JavaScript xử lý DOM -->
+    <script>
+      // Lấy các phần tử DOM bằng document.getElementById()
+      const greetingElement = document.getElementById("greeting");
+      const changeBgBtn = document.getElementById("changeBgBtn");
+      const bodyElement = document.getElementById("body");
+
+      // 2. Sử dụng đối tượng Date để hiển thị lời chào theo buổi khi trang tải
+      function setGreeting() {
+        const now = new Date();
+        const hours = now.getHours();
+        let greetingText = "";
+
+        if (hours >= 5 && hours < 12) {
+          greetingText =
+            "Chào buổi sáng! Chúc bạn một ngày mới tràn đầy năng lượng.";
+        } else if (hours >= 12 && hours < 18) {
+          greetingText =
+            "Chào buổi chiều! Chúc bạn một buổi chiều làm việc hiệu quả.";
+        } else {
+          greetingText =
+            "Chào buổi tối! Chúc bạn một buổi tối vui vẻ và thư giãn.";
+        }
+        
+
+        // Gán văn bản chào mừng bằng .innerText
+        greetingElement.innerText = greetingText;
+      }
+
+      // Gọi hàm hiển thị lời chào ngay khi trang được tải
+      setGreeting();
+
+      // Mảng các màu ngẫu nhiên để đổi màu nền
+      const colors = [
+        "#f4f4f9",
+        "#e0f7fa",
+        "#fff3e0",
+        "#fce4ec",
+        "#e8f5e9",
+        "#f3e5f5",
+      ];
+
+      // 3. Thêm sự kiện click bằng addEventListener để đổi màu nền trang
+      changeBgBtn.addEventListener("click", function () {
+        // Chọn ngẫu nhiên một màu từ mảng colors
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+        // Đổi màu nền body bằng .style
+        bodyElement.style.backgroundColor = randomColor;
+      });
+    </script>
+  </body>
+</html>
