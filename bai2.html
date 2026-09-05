@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Máy Tính Đơn Giản</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f9;
+        margin: 0;
+      }
+      .calculator {
+        background-color: #333;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        width: 300px;
+      }
+      #display {
+        background-color: #222;
+        color: #fff;
+        font-size: 2rem;
+        text-align: right;
+        padding: 15px;
+        border-radius: 6px;
+        margin-bottom: 15px;
+        min-height: 60px;
+        word-wrap: break-word;
+        word-break: break-all;
+      }
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+      button {
+        padding: 18px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background-color: #e0e0e0;
+        transition: background-color 0.2s;
+      }
+
+      button:hover {
+        background-color: #d4d4d4;
+      }
+
+      button:active {
+        background-color: #bbb;
+      }
+      .operator {
+        background-color: #ff9500;
+        color: white;
+      }
+
+      .operator:hover {
+        background-color: #e08500;
+      }
+
+      .clear {
+        background-color: #ff3b30;
+        color: white;
+        grid-column: span 2;
+      }
+
+      .clear:hover {
+        background-color: #d32f2f;
+      }
+
+      .equal {
+        background-color: #34c759;
+        color: white;
+        grid-column: span 2;
+      }
+
+      .equal:hover {
+        background-color: #2e7d32;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="calculator">
+      <!-- Màn hình hiển thị -->
+      <div id="display">0</div>
+
+      <!-- Các nút bấm 0-9, +, -, *, /, =, Clear -->
+      <div class="buttons">
+        <button class="clear" id="btnClear">Clear</button>
+        <button class="operator" value="/">/</button>
+        <button class="operator" value="*">*</button>
+
+        <button class="btn-num" value="7">7</button>
+        <button class="btn-num" value="8">8</button>
+        <button class="btn-num" value="9">9</button>
+        <button class="operator" value="-">-</button>
+
+        <button class="btn-num" value="4">4</button>
+        <button class="btn-num" value="5">5</button>
+        <button class="btn-num" value="6">6</button>
+        <button class="operator" value="+">+</button>
+
+        <button class="btn-num" value="1">1</button>
+        <button class="btn-num" value="2">2</button>
+        <button class="btn-num" value="3">3</button>
+        <button class="equal" id="btnEqual">=</button>
+
+        <button class="btn-num" value="0" style="grid-column: span 2">0</button>
+        <button class="btn-num" value=".">.</button>
+      </div>
+    </div>
+
+    <script>
+      const display = document.getElementById("display");
+      const buttons = document.querySelectorAll(".buttons button");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", function () {
+          const value = this.innerText;
+          if (this.id === "btnClear") {
+            display.innerText = "0";
+            return;
+          }
+          if (this.id === "btnEqual") {
+            try {
+              // eval() tính toán chuỗi biểu thức toán học
+              display.innerText = eval(display.innerText);
+            } catch (error) {
+              display.innerText = "Lỗi";
+            }
+            return;
+          }
+
+          if (display.innerText === "0" || display.innerText === "Lỗi") {
+            display.innerText = value;
+          } else {
+            s;
+            display.innerText += value;
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
