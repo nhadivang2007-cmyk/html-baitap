@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang Giới Thiệu Tương Tác</title>
     <style>
-      /* CSS cơ bản giúp giao diện dễ nhìn hơn */
       body {
         font-family: Arial, sans-serif;
         margin: 0;
@@ -72,7 +71,7 @@
 
       <p>Chào mừng bạn đã đến với trang web giới thiệu tương tác của tôi!</p>
 
-      <!-- Nút bấm đổi màu nền -->
+    <!-- Nút để thay đổi màu nền -->
       <button id="changeBgBtn">Đổi màu nền</button>
     </main>
 
@@ -82,12 +81,12 @@
 
     <!-- JavaScript xử lý DOM -->
     <script>
-      // Lấy các phần tử DOM bằng document.getElementById()
+
       const greetingElement = document.getElementById("greeting");
       const changeBgBtn = document.getElementById("changeBgBtn");
       const bodyElement = document.getElementById("body");
 
-      // 2. Sử dụng đối tượng Date để hiển thị lời chào theo buổi khi trang tải
+  
       function setGreeting() {
         const now = new Date();
         const hours = now.getHours();
@@ -105,14 +104,14 @@
         }
         
 
-        // Gán văn bản chào mừng bằng .innerText
+   
         greetingElement.innerText = greetingText;
       }
 
-      // Gọi hàm hiển thị lời chào ngay khi trang được tải
+
       setGreeting();
 
-      // Mảng các màu ngẫu nhiên để đổi màu nền
+
       const colors = [
         "#f4f4f9",
         "#e0f7fa",
@@ -122,12 +121,12 @@
         "#f3e5f5",
       ];
 
-      // 3. Thêm sự kiện click bằng addEventListener để đổi màu nền trang
+    
       changeBgBtn.addEventListener("click", function () {
-        // Chọn ngẫu nhiên một màu từ mảng colors
+    
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
-        // Đổi màu nền body bằng .style
+
         bodyElement.style.backgroundColor = randomColor;
       });
     </script>
