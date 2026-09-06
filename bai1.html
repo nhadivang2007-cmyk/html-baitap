@@ -1,39 +1,49 @@
-//Trần Đức Hải B25DCTV035 em xin nộp bài tập thầy giao ạ =)))
 <!doctype html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Trang Giới Thiệu Tương Tác</title>
+    <title>Trang Giới Thiệu - Trần Đức Hải</title>
     <style>
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        transition: background-color 0.3s ease; /* Hiệu ứng mượt khi đổi màu */
+        transition: background-color 0.3s ease;
+        background-color: #f4f4f9;
       }
       header {
-        background-color: #333;
+        background-color: #a31d24; /* Màu đỏ đặc trưng PTIT */
         color: white;
-        padding: 1rem;
+        padding: 1.5rem;
         text-align: center;
       }
       nav {
-        background-color: #444;
-        padding: 0.5rem;
+        background-color: #333;
+        padding: 0.8rem;
         text-align: center;
       }
       nav a {
         color: white;
-        margin: 0 10px;
+        margin: 0 15px;
         text-decoration: none;
+        font-weight: bold;
       }
       main {
+        padding: 30px;
+        max-width: 800px;
+        margin: 0 auto;
+        min-height: 400px;
+      }
+      .info-card {
+        background: white;
         padding: 20px;
-        min-height: 300px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-top: 15px;
       }
       footer {
-        background-color: #333;
+        background-color: #222;
         color: white;
         text-align: center;
         padding: 1rem;
@@ -42,52 +52,70 @@
         width: 100%;
       }
       button {
-        padding: 10px 15px;
-        font-size: 16px;
+        padding: 10px 20px;
+        font-size: 15px;
         cursor: pointer;
-        margin-top: 10px;
+        background-color: #a31d24;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        margin-top: 15px;
+      }
+      button:hover {
+        background-color: #82151b;
       }
       #greeting {
-        font-size: 20px;
+        font-size: 22px;
         font-weight: bold;
-        color: #2c3e50;
+        color: #a31d24;
       }
     </style>
   </head>
   <body id="body">
-    <!-- 1. Cấu trúc HTML gồm header, nav, main, footer -->
     <header>
-      <h1>Trang Cá Nhân Của Tôi</h1>
+      <h1>TRANG CÁ NHÂN TRẦN ĐỨC HẢI</h1>
+      <p>Học viện Công nghệ Bưu chính Viễn thông (PTIT)</p>
     </header>
 
     <nav>
       <a href="#">Trang chủ</a>
       <a href="#">Giới thiệu</a>
+      <a href="#">Học tập</a>
       <a href="#">Liên hệ</a>
     </nav>
 
     <main>
-      <!-- Lời chào theo buổi sẽ hiển thị ở đây -->
       <p id="greeting"></p>
 
-      <p>Chào mừng bạn đã đến với trang web giới thiệu tương tác của tôi!</p>
+      <div class="info-card">
+        <h2>Thông tin cá nhân</h2>
+        <ul>
+          <li><strong>Họ và tên:</strong> Trần Đức Hải</li>
+          <li><strong>Quê quán:</strong> Bắc Kạn</li>
+          <li>
+            <strong>Trường đào tạo:</strong> Học viện Công nghệ Bưu chính Viễn
+            thông (PTIT)
+          </li>
+        </ul>
+        <p>
+          Chào mừng bạn đã đến với trang thông tin tương tác của mình. Nút bên
+          dưới có thể giúp bạn chuyển đổi màu nền ngẫu nhiên của trang web!
+        </p>
+      </div>
 
-    <!-- Nút để thay đổi màu nền -->
       <button id="changeBgBtn">Đổi màu nền</button>
     </main>
 
     <footer>
-      <p>&copy; 2026 Trang cá nhân tương tác. Tất cả quyền được bảo lưu.</p>
+      <p>&copy; 2026 Trần Đức Hải - PTIT. Bản quyền được bảo lưu.</p>
     </footer>
 
-    <!-- JavaScript xử lý DOM -->
     <script>
-
+      // Lấy các element bằng document.getElementById()
       const greetingElement = document.getElementById("greeting");
       const changeBgBtn = document.getElementById("changeBgBtn");
       const bodyElement = document.getElementById("body");
 
-  
       function setGreeting() {
         const now = new Date();
         const hours = now.getHours();
@@ -95,17 +123,15 @@
 
         if (hours >= 5 && hours < 12) {
           greetingText =
-            "Chào buổi sáng! Chúc bạn một ngày mới tràn đầy năng lượng.";
+            "Chào buổi sáng! Mình là Trần Đức Hải (PTIT). Chúc bạn một ngày học tập và làm việc hiệu quả!";
         } else if (hours >= 12 && hours < 18) {
           greetingText =
-            "Chào buổi chiều! Chúc bạn một buổi chiều làm việc hiệu quả.";
+            "Chào buổi chiều! Mình là Trần Đức Hải. Chúc bạn một buổi chiều vui vẻ!";
         } else {
           greetingText =
-            "Chào buổi tối! Chúc bạn một buổi tối vui vẻ và thư giãn.";
+            "Chào buổi tối! Mình là Trần Đức Hải. Chúc bạn một buổi tối thư giãn!";
         }
-        
 
-   
         greetingElement.innerText = greetingText;
       }
 
@@ -115,19 +141,15 @@
 
       const colors = [
         "#f4f4f9",
-        "#e0f7fa",
+        "#e3f2fd",
         "#fff3e0",
-        "#fce4ec",
-        "#e8f5e9",
+        "#f1f8e9",
         "#f3e5f5",
+        "#e0f2f1",
       ];
 
-    
       changeBgBtn.addEventListener("click", function () {
-    
         const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
-
         bodyElement.style.backgroundColor = randomColor;
       });
     </script>
