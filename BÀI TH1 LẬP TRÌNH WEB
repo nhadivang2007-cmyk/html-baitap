@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Đức Hải - Portfolio | B25DCTV035</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- 1. HEADER / MENU -->
+    <header class="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">Đức Hải <span>B25DCTV035</span></a>
+            
+            <nav class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link">Giới thiệu</a>
+                <a href="#skills" class="nav-link">Kỹ năng</a>
+                <a href="#projects" class="nav-link">Dự án</a>
+                <a href="#contact" class="nav-link">Liên hệ</a>
+            </nav>
+
+            <div class="header-actions">
+                <!-- Tính năng JS 1: Toggle Dark/Light mode -->
+                <button id="theme-toggle" class="btn-icon" aria-label="Đổi giao diện">🌙</button>
+                <!-- Tính năng JS 2: Hamburger Menu -->
+                <button id="hamburger" class="hamburger" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. PHẦN GIỚI THIỆU (HERO SECTION) -->
+        <section id="about" class="section hero scroll-reveal">
+            <div class="container hero-container">
+                <div class="hero-text">
+                    <span class="badge">Mã Sinh Viên: B25DCTV035</span>
+                    <h1>Xin chào, tôi là <br><span class="highlight">Trần Đức Hải</span></h1>
+                    <p>Sinh viên ngành Công nghệ Thông tin / Viễn thông. Đam mê phát triển ứng dụng Web, học hỏi công nghệ mới và tối ưu trải nghiệm người dùng.</p>
+                    <div class="hero-btns">
+                        <a href="#projects" class="btn btn-primary">Xem Dự Án</a>
+                        <a href="#contact" class="btn btn-outline">Liên Hệ Này</a>
+                    </div>
+                </div>
+                <div class="hero-avatar">
+                    <div class="avatar-card">
+                        <div class="avatar-icon">🎓</div>
+                        <h3>Trần Đức Hải</h3>
+                        <p>Lập trình viên Web</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. DANH SÁCH KỸ NĂNG -->
+        <section id="skills" class="section skills scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">Kỹ Năng Cá Nhân</h2>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">🌐</div>
+                        <h3>Lập trình Frontend</h3>
+                        <p>HTML5, CSS3, JavaScript (ES6+), Flexbox/Grid, Responsive Web Design.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">⚙️</div>
+                        <h3>Ngôn ngữ & Thuật toán</h3>
+                        <p>C/C++, Python cơ bản, tư duy giải quyết vấn đề và cấu trúc dữ liệu.</p>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🛠️</div>
+                        <h3>Công cụ & Khác</h3>
+                        <p>Git/GitHub, VS Code, Linux cơ bản, kỹ năng làm việc nhóm.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. DANH SÁCH DỰ ÁN (≥ 3 DỰ ÁN) -->
+        <section id="projects" class="section projects scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">Dự Án Đã Thực Hiện</h2>
+                
+                <!-- Tính năng JS 3: Tìm kiếm / Lọc dự án theo từ khóa/tag -->
+                <div class="filter-wrapper">
+                    <input type="text" id="project-search" placeholder="Tìm kiếm dự án theo tên hoặc công nghệ...">
+                    <div class="filter-tags">
+                        <button class="tag-btn active" data-filter="all">Tất cả</button>
+                        <button class="tag-btn" data-filter="web">Web</button>
+                        <button class="tag-btn" data-filter="app">App</button>
+                    </div>
+                </div>
+
+                <div class="projects-grid" id="projects-grid">
+                    <article class="project-card" data-category="web" data-title="trang web portfolio cá nhân html css javascript">
+                        <div class="project-img">💻</div>
+                        <div class="project-content">
+                            <span class="project-tag">Web</span>
+                            <h3>Trang Web Portfolio Cá Nhân</h3>
+                            <p>Website giới thiệu bản thân, kỹ năng và dự án với đầy đủ tính năng tương tác Responsive.</p>
+                            <div class="project-tech"><span>HTML</span> <span>CSS</span> <span>JS</span></div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="app" data-title="ứng dụng quản lý công việc todo list storage">
+                        <div class="project-img">📋</div>
+                        <div class="project-content">
+                            <span class="project-tag">App</span>
+                            <h3>Ứng Dụng Quản Lý Công Việc</h3>
+                            <p>Cho phép người dùng thêm, sửa, xóa và lưu danh sách ghi nhớ vào LocalStorage.</p>
+                            <div class="project-tech"><span>JavaScript</span> <span>LocalStorage</span></div>
+                        </div>
+                    </article>
+
+                    <article class="project-card" data-category="web" data-title="ứng dụng tra cứu thời tiết api fetch">
+                        <div class="project-img">🌤️</div>
+                        <div class="project-content">
+                            <span class="project-tag">Web</span>
+                            <h3>Ứng Dụng Tra Cứu Thời Tiết</h3>
+                            <p>Tích hợp API thời gian thực để tra cứu thời tiết các thành phố trên thế giới.</p>
+                            <div class="project-tech"><span>Fetch API</span> <span>JS</span> <span>CSS Grid</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. FORM LIÊN HỆ -->
+        <section id="contact" class="section contact scroll-reveal">
+            <div class="container">
+                <h2 class="section-title">Gửi Tin Nhắn</h2>
+                <form id="contact-form" class="contact-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Họ và Tên (*)</label>
+                        <input type="text" id="name" name="name" placeholder="Nhập họ và tên...">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email (*)</label>
+                        <input type="email" id="email" name="email" placeholder="example@domain.com">
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Nội dung tin nhắn (*)</label>
+                        <textarea id="message" name="message" rows="5" maxlength="300" placeholder="Nhập tin nhắn (tối đa 300 ký tự)..."></textarea>
+                        <!-- Tính năng JS 4: Đếm số ký tự -->
+                        <div class="char-counter"><span id="char-count">0</span>/300 ký tự</div>
+                        <small class="error-msg"></small>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Gửi Tin Nhắn</button>
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- 6. FOOTER -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <!-- Tính năng JS 5: Hiển thị năm hiện tại tự động -->
+            <p>&copy; <span id="current-year"></span> Trần Đức Hải (B25DCTV035). All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
