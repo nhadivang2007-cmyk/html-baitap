@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Trang Giới Thiệu - Trần Đức Hải</title>
+    <style>
+      :root {
+        --ptit-red: #a31d24;
+        --ptit-red-hover: #82151b;
+        --bg-default: #f4f4f9;
+        --text-color: #333333;
+        --card-bg: #ffffff;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          sans-serif;
+        background-color: var(--bg-default);
+        color: var(--text-color);
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        transition: background-color 0.4s ease;
+      }
+
+      header {
+        background-color: var(--ptit-red);
+        color: #ffffff;
+        padding: 2rem 1rem;
+        text-align: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+      }
+
+      header h1 {
+        font-size: 1.8rem;
+        letter-spacing: 0.5px;
+        margin-bottom: 0.3rem;
+      }
+
+      header p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+
+      nav {
+        background-color: #2b2b2b;
+        padding: 0.8rem 1rem;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      nav a {
+        color: #e0e0e0;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+      }
+
+      nav a:hover {
+        color: #ffffff;
+        background-color: rgba(255, 255, 255, 0.1);
+      }
+
+      main {
+        flex: 1;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 30px 20px;
+      }
+
+      #greeting {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--ptit-red);
+        background-color: rgba(163, 29, 36, 0.08);
+        padding: 12px 18px;
+        border-left: 4px solid var(--ptit-red);
+        border-radius: 0 6px 6px 0;
+        margin-bottom: 25px;
+      }
+
+      .info-card {
+        background: var(--card-bg);
+        padding: 25px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+
+      .info-card h2 {
+        color: var(--ptit-red);
+        font-size: 1.35rem;
+        margin-bottom: 15px;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 8px;
+      }
+
+      .info-card ul {
+        list-style: none;
+        margin-bottom: 15px;
+      }
+
+      .info-card li {
+        padding: 8px 0;
+        border-bottom: 1px dashed #eee;
+      }
+
+      .info-card li:last-child {
+        border-bottom: none;
+      }
+
+      .info-card p {
+        color: #555;
+        font-size: 0.95rem;
+        margin-top: 10px;
+      }
+
+      .actions {
+        margin-top: 25px;
+      }
+
+      button {
+        padding: 12px 24px;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        background-color: var(--ptit-red);
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        transition: all 0.2s ease;
+        box-shadow: 0 2px 5px rgba(163, 29, 36, 0.3);
+      }
+
+      button:hover {
+        background-color: var(--ptit-red-hover);
+        transform: translateY(-1px);
+        box-shadow: 0 4px 8px rgba(163, 29, 36, 0.4);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      footer {
+        background-color: #1a1a1a;
+        color: #a0a0a0;
+        text-align: center;
+        padding: 1.2rem;
+        font-size: 0.85rem;
+        margin-top: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>TRANG CÁ NHÂN TRẦN ĐỨC HẢI</h1>
+      <p>Học viện Công nghệ Bưu chính Viễn thông (PTIT)</p>
+    </header>
+
+    <nav>
+      <a href="#">Trang chủ</a>
+      <a href="#">Giới thiệu</a>
+      <a href="#">Học tập</a>
+      <a href="#">Liên hệ</a>
+    </nav>
+
+    <main>
+      <div id="greeting"></div>
+
+      <div class="info-card">
+        <h2>Thông tin cá nhân</h2>
+        <ul>
+          <li><strong>Họ và tên:</strong> Trần Đức Hải</li>
+          <li><strong>Quê quán:</strong> Bắc Kạn</li>
+          <li>
+            <strong>Trường đào tạo:</strong> Học viện Công nghệ Bưu chính Viễn
+            thông (PTIT)
+          </li>
+        </ul>
+        <p>
+          Chào mừng bạn đã đến với trang thông tin tương tác của mình. Bạn có
+          thể nhấn nút bên dưới để trải nghiệm đổi màu nền giao diện ngẫu nhiên!
+        </p>
+      </div>
+
+      <div class="actions">
+        <button id="changeBgBtn">🎨 Đổi màu nền</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>&copy; 2026 Trần Đức Hải - PTIT. Bản quyền được bảo lưu.</p>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const greetingElement = document.getElementById("greeting");
+        const changeBgBtn = document.getElementById("changeBgBtn");
+
+        // Thiết lập lời chào theo khung giờ
+        function setGreeting() {
+          const hours = new Date().getHours();
+          let greetingText = "";
+          let icon = "";
+
+          if (hours >= 5 && hours < 12) {
+            icon = "🌅";
+            greetingText =
+              "Chào buổi sáng! Mình là Trần Đức Hải (PTIT). Chúc bạn một ngày học tập và làm việc hiệu quả!";
+          } else if (hours >= 12 && hours < 18) {
+            icon = "☀️";
+            greetingText =
+              "Chào buổi chiều! Mình là Trần Đức Hải. Chúc bạn một buổi chiều tràn đầy năng lượng!";
+          } else {
+            icon = "🌙";
+            greetingText =
+              "Chào buổi tối! Mình là Trần Đức Hải. Chúc bạn một buổi tối thư giãn!";
+          }
+
+          greetingElement.innerHTML = `${icon} ${greetingText}`;
+        }
+
+        setGreeting();
+
+        // Danh sách màu dịu mắt
+        const colors = [
+          "#f4f4f9",
+          "#e3f2fd",
+          "#fff3e0",
+          "#f1f8e9",
+          "#f3e5f5",
+          "#e0f2f1",
+          "#fce4ec",
+        ];
+
+        let lastIndex = 0;
+
+        // Xử lý sự kiện đổi màu nền (chống lặp màu)
+        changeBgBtn.addEventListener("click", () => {
+          let randomIndex;
+          do {
+            randomIndex = Math.floor(Math.random() * colors.length);
+          } while (randomIndex === lastIndex && colors.length > 1);
+
+          lastIndex = randomIndex;
+          document.body.style.backgroundColor = colors[randomIndex];
+        });
+      });
+    </script>
+  </body>
+</html>
