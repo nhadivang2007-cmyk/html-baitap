@@ -1,156 +1,164 @@
-//Trần Đức Hải B25DCTV035 em xin nộp bài tập thầy giao ạ =)))
 <!doctype html>
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Máy Tính Đơn Giản</title>
+    <title>Virtual Calculator - Trần Đức Hải</title>
+
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
     <style>
       * {
         box-sizing: border-box;
         font-family: Arial, sans-serif;
       }
-
       body {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
         background-color: #f4f4f9;
         margin: 0;
       }
-      .calculator {
-        background-color: #333;
+      .calculator-container {
+        background-color: #e0e0e0;
         padding: 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-        width: 300px;
+        border-radius: 8px;
+        width: 320px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
       }
-      #display {
-        background-color: #222;
-        color: #fff;
-        font-size: 2rem;
+      .student-info {
+        text-align: center;
+        margin-bottom: 10px;
+        color: #333;
+      }
+      .student-info h3 {
+        margin: 0 0 10px 0;
+        font-size: 15px;
+      }
+      .display {
+        background-color: #dcdcdc;
+        color: #000;
+        font-size: 1.8rem;
         text-align: right;
         padding: 15px;
-        border-radius: 6px;
+        border-radius: 4px;
         margin-bottom: 15px;
         min-height: 60px;
-        word-wrap: break-word;
         word-break: break-all;
+        border: 1px solid #ccc;
       }
-      .buttons {
+      .buttons-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 10px;
+        gap: 8px;
       }
-      button {
-        padding: 18px;
-        font-size: 1.2rem;
+      .btn {
+        padding: 15px 5px;
+        font-size: 1.1rem;
         font-weight: bold;
-        border: none;
-        border-radius: 6px;
+        color: white;
+        border: 1px solid #1b5e20;
+        border-radius: 4px;
         cursor: pointer;
-        background-color: #e0e0e0;
-        transition: background-color 0.2s;
+        transition: opacity 0.2s;
       }
-
-      button:hover {
-        background-color: #d4d4d4;
+      .btn:hover {
+        opacity: 0.85;
       }
-
-      button:active {
-        background-color: #bbb;
-      }
-      .operator {
-        background-color: #ff9500;
-        color: white;
-      }
-
-      .operator:hover {
-        background-color: #e08500;
-      }
-
-      .clear {
-        background-color: #ff3b30;
-        color: white;
+      .buttons-grid .btn:nth-child(17),
+      .buttons-grid .btn:nth-child(18) {
         grid-column: span 2;
-      }
-
-      .clear:hover {
-        background-color: #d32f2f;
-      }
-
-      .equal {
-        background-color: #34c759;
-        color: white;
-        grid-column: span 2;
-      }
-
-      .equal:hover {
-        background-color: #2e7d32;
       }
     </style>
   </head>
   <body>
-    <div class="calculator">
-      <!-- Màn hình hiển thị -->
-      <div id="display">0</div>
+    <div id="root"></div>
 
-      <!-- Các nút bấm 0-9, +, -, *, /, =, Clear -->
-      <div class="buttons">
-        <button class="clear" id="btnClear">Clear</button>
-        <button class="operator" value="/">/</button>
-        <button class="operator" value="*">*</button>
+    <script type="text/babel">
+      const { useState } = React;
 
-        <button class="btn-num" value="7">7</button>
-        <button class="btn-num" value="8">8</button>
-        <button class="btn-num" value="9">9</button>
-        <button class="operator" value="-">-</button>
+      const Display = ({ value }) => (
+        <div className="display">{value || "0"}</div>
+      );
 
-        <button class="btn-num" value="4">4</button>
-        <button class="btn-num" value="5">5</button>
-        <button class="btn-num" value="6">6</button>
-        <button class="operator" value="+">+</button>
+      const Button = ({ label, color, onClick }) => (
+        <button
+          className="btn"
+          style={{ backgroundColor: color }}
+          onClick={() => onClick(label)}
+        >
+          {label}
+        </button>
+      );
 
-        <button class="btn-num" value="1">1</button>
-        <button class="btn-num" value="2">2</button>
-        <button class="btn-num" value="3">3</button>
-        <button class="equal" id="btnEqual">=</button>
+      function App() {
+        const [expression, setExpression] = useState("0");
 
-        <button class="btn-num" value="0" style="grid-column: span 2">0</button>
-        <button class="btn-num" value=".">.</button>
-      </div>
-    </div>
-
-    <script>
-      const display = document.getElementById("display");
-      const buttons = document.querySelectorAll(".buttons button");
-
-      buttons.forEach((button) => {
-        button.addEventListener("click", function () {
-          const value = this.innerText;
-          if (this.id === "btnClear") {
-            display.innerText = "0";
-            return;
-          }
-          if (this.id === "btnEqual") {
+        const handleButtonClick = (value) => {
+          if (value === "Clear" || value === "C") setExpression("0");
+          else if (value === "Delete") {
+            if (expression.length <= 1 || expression === "Lỗi")
+              setExpression("0");
+            else setExpression(expression.slice(0, -1));
+          } else if (value === "=") {
             try {
-              // eval() tính toán chuỗi biểu thức toán học
-              display.innerText = eval(display.innerText);
-            } catch (error) {
-              display.innerText = "Lỗi";
+              setExpression(String(eval(expression)));
+            } catch (e) {
+              setExpression("Lỗi");
             }
-            return;
-          }
-
-          if (display.innerText === "0" || display.innerText === "Lỗi") {
-            display.innerText = value;
           } else {
-            s;
-            display.innerText += value;
+            if (expression === "0" || expression === "Lỗi")
+              setExpression(value);
+            else setExpression(expression + value);
           }
-        });
-      });
+        };
+
+        const buttons = [
+          { label: "Clear", color: "#4CAF50" },
+          { label: "Delete", color: "#4CAF50" },
+          { label: ".", color: "#4CAF50" },
+          { label: "/", color: "#2E7D32" },
+          { label: "7", color: "#4CAF50" },
+          { label: "8", color: "#4CAF50" },
+          { label: "9", color: "#4CAF50" },
+          { label: "*", color: "#2E7D32" },
+          { label: "4", color: "#4CAF50" },
+          { label: "5", color: "#4CAF50" },
+          { label: "6", color: "#4CAF50" },
+          { label: "-", color: "#2E7D32" },
+          { label: "1", color: "#4CAF50" },
+          { label: "2", color: "#4CAF50" },
+          { label: "3", color: "#4CAF50" },
+          { label: "+", color: "#2E7D32" },
+          { label: "0", color: "#4CAF50" },
+          { label: "=", color: "#2E7D32" },
+        ];
+
+        return (
+          <div className="calculator-container">
+            <div className="student-info">
+              <h3>Trần Đức Hải - B25DCTV035</h3>
+            </div>
+            <Display value={expression} />
+            <div className="buttons-grid">
+              {buttons.map((btn, i) => (
+                <Button
+                  key={i}
+                  label={btn.label}
+                  color={btn.color}
+                  onClick={handleButtonClick}
+                />
+              ))}
+            </div>
+          </div>
+        );
+      }
+
+      const root = ReactDOM.createRoot(document.getElementById("root"));
+      root.render(<App />);
     </script>
   </body>
 </html>
