@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CV React - Trần Đức Hải</title>
+  
+  <!-- Tải React và Babel trực tiếp từ CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    .app-container { transition: background-color 0.3s ease; min-height: 100vh; display: flex; flex-direction: column; }
+    header { background-color: #a31d24; color: white; padding: 1.5rem; text-align: center; }
+    header h1 { margin: 0 0 8px 0; }
+    header p { margin: 0; opacity: 0.9; }
+    nav { background-color: #333; padding: 0.8rem; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+    main { padding: 30px 20px 80px 20px; max-width: 800px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+    .info-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); margin-top: 15px; }
+    .info-card h2 { color: #a31d24; margin-top: 0; border-bottom: 2px solid #f0f0f0; padding-bottom: 8px; }
+    .skills-list { padding-left: 20px; line-height: 1.8; }
+    .projects-grid { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }
+    .project-card { background: #fdfdfd; border-left: 4px solid #a31d24; padding: 12px 16px; border-radius: 4px; }
+    .project-card h3 { margin: 0 0 6px 0; color: #222; }
+    .project-card p { margin: 0 0 8px 0; color: #666; font-size: 14px; }
+    .badge { display: inline-block; background: #e0e0e0; color: #333; font-size: 12px; padding: 3px 8px; border-radius: 12px; }
+    #greeting { font-size: 20px; font-weight: bold; color: #a31d24; background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); }
+    button { padding: 10px 20px; font-size: 15px; cursor: pointer; background-color: #a31d24; color: white; border: none; border-radius: 5px; margin-top: 20px; }
+    button:hover { background-color: #82151b; }
+    footer { background-color: #222; color: white; text-align: center; padding: 1rem; margin-top: auto; }
+  </style>
+</head>
+<body>
+  <!-- Nơi React sẽ vẽ giao diện vào -->
+  <div id="root"></div>
+
+  <!-- Đoạn mã React (JSX) -->
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // 1. Component Section (dùng props children)
+    const Section = ({ title, children }) => (
+      <section className="info-card">
+        {title && <h2>{title}</h2>}
+        {children}
+      </section>
+    );
+
+    // 2. Component Header
+    const Header = () => (
+      <>
+        <header>
+          <h1>TRANG CÁ NHÂN TRẦN ĐỨC HẢI</h1>
+          <p>Học viện Công nghệ Bưu chính Viễn thông (PTIT)</p>
+        </header>
+        <nav>
+          <a href="#">Trang chủ</a>
+          <a href="#">Giới thiệu</a>
+          <a href="#">Học tập</a>
+          <a href="#">Liên hệ</a>
+        </nav>
+      </>
+    );
+
+    // 3. Component Skills (truyền mảng qua props)
+    const Skills = ({ skills }) => (
+      <ul className="skills-list">
+        {skills.map((skill, index) => <li key={index}>{skill}</li>)}
+      </ul>
+    );
+
+    // 4. Component Projects (truyền mảng qua props)
+    const Projects = ({ projects }) => (
+      <div className="projects-grid">
+        {projects.map((proj) => (
+          <div key={proj.id} className="project-card">
+            <h3>{proj.title}</h3>
+            <p>{proj.description}</p>
+            <span className="badge">{proj.tech}</span>
+          </div>
+        ))}
+      </div>
+    );
+
+    // 5. Component Footer
+    const Footer = () => (
+      <footer>
+        <p>&copy; 2026 Trần Đức Hải - PTIT. Bản quyền được bảo lưu.</p>
+      </footer>
+    );
+
+    // Component chính App
+    function App() {
+      const skillsData = [
+        'HTML5 / CSS3 / JavaScript (ES6+)',
+        'ReactJS & Component Architecture',
+        'Python (OpenCV, Flask)',
+        'C/C++ & Cấu trúc dữ liệu',
+        'Git / GitHub & Replit'
+      ];
+
+      const projectsData = [
+        { id: 1, title: 'Hệ thống điểm danh khuôn mặt thời gian thực', description: 'Ứng dụng điểm danh tự động kết hợp OpenCV, Flask và face_recognition.', tech: 'Python / Flask / OpenCV' },
+        { id: 2, title: 'Trang Portfolio cá nhân', description: 'Trang giới thiệu bản thân tương tác và hiển thị sản phẩm học tập.', tech: 'ReactJS / CSS3' }
+      ];
+
+      const [greeting, setGreeting] = useState('');
+      const [bgColor, setBgColor] = useState('#f4f4f9');
+      const colors = ['#f4f4f9', '#e3f2fd', '#fff3e0', '#f1f8e9', '#f3e5f5', '#e0f2f1'];
+
+      useEffect(() => {
+        const hours = new Date().getHours();
+        if (hours >= 5 && hours < 12) setGreeting('Chào buổi sáng! Mình là Trần Đức Hải (PTIT). Chúc bạn một ngày hiệu quả!');
+        else if (hours >= 12 && hours < 18) setGreeting('Chào buổi chiều! Mình là Trần Đức Hải. Chúc bạn một buổi chiều vui vẻ!');
+        else setGreeting('Chào buổi tối! Mình là Trần Đức Hải. Chúc bạn một buổi tối thư giãn!');
+      }, []);
+
+      const handleChangeBg = () => {
+        const randomColor = colors[Math.floor(Math.random() * colors.length)];
+        setBgColor(randomColor);
+      };
+
+      return (
+        <div className="app-container" style={{ backgroundColor: bgColor }}>
+          <Header />
+          <main>
+            {greeting && <p id="greeting">{greeting}</p>}
+
+            <Section title="Thông tin cá nhân">
+              <ul>
+                <li><strong>Họ và tên:</strong> Trần Đức Hải</li>
+                <li><strong>Quê quán:</strong> Bắc Kạn</li>
+                <li><strong>Trường đào tạo:</strong> Học viện Công nghệ Bưu chính Viễn thông (PTIT)</li>
+              </ul>
+              <p style={{ marginTop: '10px', color: '#555' }}>
+                Chào mừng bạn đã đến với trang thông tin tương tác của mình. Nút bên dưới có thể giúp bạn chuyển đổi màu nền ngẫu nhiên của trang web!
+              </p>
+            </Section>
+
+            <Section title="Kỹ năng chuyên môn">
+              <Skills skills={skillsData} />
+            </Section>
+
+            <Section title="Dự án nổi bật">
+              <Projects projects={projectsData} />
+            </Section>
+
+            <button onClick={handleChangeBg}>Đổi màu nền</button>
+          </main>
+          <Footer />
+        </div>
+      );
+    }
+
+    // Render React App vào #root
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
+</body>
+</html>
